@@ -1,6 +1,8 @@
 "use strict"
 
-const elements = {
+
+// code to rotate through multiple quotes with a set interval 
+/* const elements = {
     quote: document.getElementById("quote"),
     author: document.getElementById("author"),
 };
@@ -38,7 +40,32 @@ function loopThroughQuotes() {
         } else {
             quoteIndex = 0;
         }
-    }, 3000);
+    }, 3000);git git 
 }
 
-setTimeout(loopThroughQuotes, 3000);
+setTimeout(loopThroughQuotes, 3000); */
+
+
+async function getRandomImage() {
+    const client_id = "YOUR_ACCESS_KEY";
+    const endpoint = `https://api.unsplash.com/photos/random/?client_id=${client_id}`;
+/*  try {
+        const response = await fetch(endpoint);
+        const returnedData = await response.json()
+        console.log(returnedData) */
+
+    //updating image to use randomImage
+    try {
+        const response = await fetch(endpoint);
+        const returnedData = await response.json();
+        const receivedPhotoUrl = returnedData.urls.regular;
+ 
+        const imgDiv = document.querySelector(".background-img");
+        imgDiv.style.backgroundImage = `url("${receivedPhotoUrl}")`;
+    
+    } catch (error) {
+        console.error(error)
+    }
+}
+
+getRandomImage();
